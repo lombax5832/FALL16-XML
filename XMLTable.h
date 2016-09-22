@@ -6,9 +6,6 @@ struct Row {
   int counter;
 };
 
-//Constants
-const int INPUT_LINE_MAX_SIZE = 50;
-
 class XMLTable {
 public:
   XMLTable(const string& input, const string& output);
