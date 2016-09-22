@@ -13,6 +13,10 @@ void XMLTable::newRow(string input) {
 }
 
 int XMLTable::getCounter(string input) {
+	size_t index = getIndex(input);
+		if (index != string::npos) {
+			return table.at(index).counter;
+		}
 	return 0;
 }
 
@@ -30,11 +34,11 @@ size_t XMLTable::getIndex(string input) {
 			return i;
 		}
 	}
-	return -1;
+	return string::npos;
 }
 
 bool XMLTable::isInTable(string input) {
-	if (getIndex(input) != -1) {
+	if (getIndex(input) != string::npos) {
 		return true;
 	}
 	return false;
