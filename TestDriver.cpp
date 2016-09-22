@@ -5,7 +5,6 @@ using namespace std;
 
 //test
 int main() {
-  int ph;
   string input("test");
   XMLTable xmltable("input.txt", "output.txt");
 
@@ -13,6 +12,4 @@ int main() {
 
   xmltable.print();
   xmltable.table2File();
-
-  cin >> ph;
 }
