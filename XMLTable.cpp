@@ -1,10 +1,10 @@
 #include "XMLTable.h"
 #include<string>
-#include<algorithm>
+#include<cmath>
 #include<fstream>
 
 
-XMLTable::XMLTable(const string input, string output){
+XMLTable::XMLTable(const string input, string output) {
 	inpFile = input;
 	outFile = output;
 }
@@ -25,15 +25,15 @@ void XMLTable::addElement(string input) {
 	}
 }
 
-int XMLTable::getCounter(string input) const{
+int XMLTable::getCounter(string input) const {
 	size_t index = getIndex(input);
-		if (index != string::npos) {
-			return table.at(index).counter;
-		}
+	if (index != string::npos) {
+		return table.at(index).counter;
+	}
 	return 0;
 }
 
-int XMLTable::getTotalElements() const{
+int XMLTable::getTotalElements() const {
 	int sum = 0;
 	for (size_t i = 0; i < table.size(); i++) {
 		sum += table.at(i).counter;
@@ -41,7 +41,7 @@ int XMLTable::getTotalElements() const{
 	return sum;
 }
 
-size_t XMLTable::getIndex(string input) const{
+size_t XMLTable::getIndex(string input) const {
 	for (size_t i = 0; i < table.size(); i++) {
 		if (table.at(i).name == input) {
 			return i;
@@ -54,22 +54,22 @@ int XMLTable::getTableWidth() const {
 	return 0;
 }
 
-bool XMLTable::isInTable(string input) const{
+bool XMLTable::isInTable(string input) const {
 	if (getIndex(input) != string::npos) {
 		return true;
 	}
 	return false;
 }
 
-bool XMLTable::isEmpty() const{
+bool XMLTable::isEmpty() const {
 	if (table.size() == 0) {
 		return true;
 	}
 	return false;
 }
 
-void XMLTable::print() const{
+void XMLTable::print() const {
 }
 
-void XMLTable::table2File() const{
+void XMLTable::table2File() const {
 }
