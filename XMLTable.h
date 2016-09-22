@@ -27,6 +27,8 @@ public:
 
 	bool isEmpty() const;
 
+	void toOstream(ostream& ostrm) const;
+
 	void print() const;
 
 	void table2File() const;
