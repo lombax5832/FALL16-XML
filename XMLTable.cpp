@@ -13,7 +13,7 @@ XMLTable::XMLTable(const string& input, const string& output) {
 
 void XMLTable::newRow(const string& input) {
 	Row newRow;
-	newRow.counter = 0;
+	newRow.counter = 1;
 	newRow.name = input;
 
 	table.push_back(newRow);
@@ -77,10 +77,8 @@ bool XMLTable::isEmpty() const {
 void XMLTable::toOstream(ostream& ostrm) const {
 	int width = getTableWidth();
 
-	ostrm << setw(width);
-
 	for (int i = 0; i < table.size(); i++) {
-		ostrm << table.at(i).name << table.at(i).counter;
+		ostrm << setw(width) << left << table.at(i).name << table.at(i).counter << endl;
 	}
 }
 
