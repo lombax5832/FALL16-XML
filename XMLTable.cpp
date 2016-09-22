@@ -1,5 +1,6 @@
 #include "XMLTable.h"
 #include<string>
+#include<algorithm>
 
 
 XMLTable::XMLTable(const string input, string output){
@@ -19,11 +20,16 @@ int XMLTable::getTotalElements() {
 }
 
 bool XMLTable::isInTable(string input) {
+	for (size_t i = 0; i<input.size(); i++) {
+		if (table.at(i).name == input) {
+			return true;
+		}
+	}
 	return false;
 }
 
 bool XMLTable::isEmpty() {
-	if (table.size == 0) {
+	if (table.size() == 0) {
 		return true;
 	}
 	return false;
