@@ -13,19 +13,23 @@ public:
 
 	void newRow(string input);
 
-	int getCounter(string input);
+	void addElement(string input);
 
-	int getTotalElements();
+	int getCounter(string input) const;
 
-	size_t getIndex(string input);
+	int getTotalElements() const;
 
-	bool isInTable(string input);
+	size_t getIndex(string input) const;
 
-	bool isEmpty();
+	int getTableWidth() const;
 
-	void print();
+	bool isInTable(string input) const;
 
-	void table2File();
+	bool isEmpty() const;
+
+	void print() const;
+
+	void table2File() const;
 private:
 	vector<Row> table;
 	string inpFile;

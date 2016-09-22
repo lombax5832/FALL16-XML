@@ -17,7 +17,15 @@ void XMLTable::newRow(string input) {
 	table.push_back(newRow);
 }
 
-int XMLTable::getCounter(string input) {
+void XMLTable::addElement(string input) {
+	if (!isInTable(input)) {
+		newRow(input);
+	} else {
+		table.at(getIndex(input)).counter++;
+	}
+}
+
+int XMLTable::getCounter(string input) const{
 	size_t index = getIndex(input);
 		if (index != string::npos) {
 			return table.at(index).counter;
@@ -25,7 +33,7 @@ int XMLTable::getCounter(string input) {
 	return 0;
 }
 
-int XMLTable::getTotalElements() {
+int XMLTable::getTotalElements() const{
 	int sum = 0;
 	for (size_t i = 0; i < table.size(); i++) {
 		sum += table.at(i).counter;
@@ -33,7 +41,7 @@ int XMLTable::getTotalElements() {
 	return sum;
 }
 
-size_t XMLTable::getIndex(string input) {
+size_t XMLTable::getIndex(string input) const{
 	for (size_t i = 0; i < table.size(); i++) {
 		if (table.at(i).name == input) {
 			return i;
@@ -42,22 +50,26 @@ size_t XMLTable::getIndex(string input) {
 	return string::npos;
 }
 
-bool XMLTable::isInTable(string input) {
+int XMLTable::getTableWidth() const {
+	return 0;
+}
+
+bool XMLTable::isInTable(string input) const{
 	if (getIndex(input) != string::npos) {
 		return true;
 	}
 	return false;
 }
 
-bool XMLTable::isEmpty() {
+bool XMLTable::isEmpty() const{
 	if (table.size() == 0) {
 		return true;
 	}
 	return false;
 }
 
-void XMLTable::print() {
+void XMLTable::print() const{
 }
 
-void XMLTable::table2File() {
+void XMLTable::table2File() const{
 }
