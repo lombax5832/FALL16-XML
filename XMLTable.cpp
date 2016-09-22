@@ -1,6 +1,6 @@
 #include "XMLTable.h"
 #include<string>
-#include<cmath>
+#include<algorithm>
 #include<fstream>
 
 
@@ -51,7 +51,11 @@ size_t XMLTable::getIndex(string input) const {
 }
 
 int XMLTable::getTableWidth() const {
-	return 0;
+	size_t length = 0;
+	for (size_t i = 0; i < table.size(); i++) {
+		length = max(length, table.at(i).name.length());
+	}
+	return length + 1;
 }
 
 bool XMLTable::isInTable(string input) const {
