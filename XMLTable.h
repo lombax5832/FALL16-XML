@@ -9,21 +9,21 @@ struct Row
 
 class XMLTable {
 public:
-	XMLTable(const string input, string output);
+	XMLTable(const string& input, const string& output);
 
-	void newRow(string input);
+	void newRow(const string& input);
 
-	void addElement(string input);
+	void addElement(const string& input);
 
-	int getCounter(string input) const;
+	int getCounter(const string& input) const;
 
 	int getTotalElements() const;
 
-	size_t getIndex(string input) const;
+	size_t getIndex(const string& input) const;
 
 	int getTableWidth() const;
 
-	bool isInTable(string input) const;
+	bool isInTable(const string& input) const;
 
 	bool isEmpty() const;
 

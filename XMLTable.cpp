@@ -4,12 +4,12 @@
 #include<fstream>
 
 
-XMLTable::XMLTable(const string input, string output) {
+XMLTable::XMLTable(const string& input, const string& output) {
 	inpFile = input;
 	outFile = output;
 }
 
-void XMLTable::newRow(string input) {
+void XMLTable::newRow(const string& input) {
 	Row newRow;
 	newRow.counter = 0;
 	newRow.name = input;
@@ -17,7 +17,7 @@ void XMLTable::newRow(string input) {
 	table.push_back(newRow);
 }
 
-void XMLTable::addElement(string input) {
+void XMLTable::addElement(const string& input) {
 	if (!isInTable(input)) {
 		newRow(input);
 	} else {
@@ -25,7 +25,7 @@ void XMLTable::addElement(string input) {
 	}
 }
 
-int XMLTable::getCounter(string input) const {
+int XMLTable::getCounter(const string& input) const {
 	size_t index = getIndex(input);
 	if (index != string::npos) {
 		return table.at(index).counter;
@@ -41,7 +41,7 @@ int XMLTable::getTotalElements() const {
 	return sum;
 }
 
-size_t XMLTable::getIndex(string input) const {
+size_t XMLTable::getIndex(const string& input) const {
 	for (size_t i = 0; i < table.size(); i++) {
 		if (table.at(i).name == input) {
 			return i;
@@ -58,7 +58,7 @@ int XMLTable::getTableWidth() const {
 	return length + 1;
 }
 
-bool XMLTable::isInTable(string input) const {
+bool XMLTable::isInTable(const string& input) const {
 	if (getIndex(input) != string::npos) {
 		return true;
 	}
