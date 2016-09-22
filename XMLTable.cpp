@@ -16,11 +16,15 @@ int XMLTable::getCounter(string input) {
 }
 
 int XMLTable::getTotalElements() {
-	return 0;
+	int sum = 0;
+	for (size_t i = 0; i < table.size(); i++) {
+		sum += table.at(i).counter;
+	}
+	return sum;
 }
 
 bool XMLTable::isInTable(string input) {
-	for (size_t i = 0; i<input.size(); i++) {
+	for (size_t i = 0; i < table.size(); i++) {
 		if (table.at(i).name == input) {
 			return true;
 		}
