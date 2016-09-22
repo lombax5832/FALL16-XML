@@ -23,6 +23,9 @@ bool XMLTable::isInTable(string input) {
 }
 
 bool XMLTable::isEmpty() {
+	if (table.size == 0) {
+		return true;
+	}
 	return false;
 }
 
