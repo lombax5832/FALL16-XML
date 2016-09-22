@@ -1,6 +1,7 @@
 #include "XMLTable.h"
 #include<string>
 #include<algorithm>
+#include<fstream>
 
 
 XMLTable::XMLTable(const string input, string output){
@@ -23,11 +24,18 @@ int XMLTable::getTotalElements() {
 	return sum;
 }
 
-bool XMLTable::isInTable(string input) {
+size_t XMLTable::getIndex(string input) {
 	for (size_t i = 0; i < table.size(); i++) {
 		if (table.at(i).name == input) {
-			return true;
+			return i;
 		}
+	}
+	return -1;
+}
+
+bool XMLTable::isInTable(string input) {
+	if (getIndex(input) != -1) {
+		return true;
 	}
 	return false;
 }

@@ -17,6 +17,8 @@ public:
 
 	int getTotalElements();
 
+	size_t getIndex(string input);
+
 	bool isInTable(string input);
 
 	bool isEmpty();
