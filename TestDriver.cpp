@@ -1,7 +1,5 @@
 using namespace std;
-#include<iostream>
 #include"XMLTable.h"
-#include<fstream>
 
 //test
 int main() {
