@@ -5,7 +5,6 @@ using namespace std;
 
 //test
 int main() {
-  string input("test");
   XMLTable xmltable("input.txt", "output.txt");
 
   xmltable.populateRowsFromFile();
