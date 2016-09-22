@@ -10,6 +10,11 @@ XMLTable::XMLTable(const string input, string output){
 }
 
 void XMLTable::newRow(string input) {
+	Row newRow;
+	newRow.counter = 0;
+	newRow.name = input;
+
+	table.push_back(newRow);
 }
 
 int XMLTable::getCounter(string input) {
