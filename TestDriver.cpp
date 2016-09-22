@@ -1,23 +1,18 @@
 using namespace std;
 #include<iostream>
 #include"XMLTable.h"
+#include<fstream>
 
 //test
 int main() {
   int ph;
-  string input("");
-  string output("");
-  XMLTable xmltable(input, output);
+  string input("test");
+  XMLTable xmltable("input.txt", "output.txt");
 
-  xmltable.addElement("Hello");
-  xmltable.addElement("Alpha");
-  xmltable.addElement("Alpha");
-  xmltable.addElement("Beta");
-  xmltable.addElement("Hello");
-  xmltable.addElement("Hello1234");
-  xmltable.addElement("Alpha");
+  xmltable.populateRowsFromFile();
 
   xmltable.print();
+  xmltable.table2File();
 
   cin >> ph;
 }

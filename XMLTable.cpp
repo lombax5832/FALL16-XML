@@ -4,6 +4,7 @@
 #include<fstream>
 #include<iomanip>
 #include<iostream>
+#include<sstream>
 
 
 XMLTable::XMLTable(const string& input, const string& output) {
@@ -74,6 +75,40 @@ bool XMLTable::isEmpty() const {
   return false;
 }
 
+void XMLTable::populateRowsFromFile() {
+  ifstream input(inpFile);
+
+  if (!input) {
+    cout << "Could not open file " << inpFile << " for input" << endl;
+    exit(1);
+  }
+
+  string currentLine;
+  getline(input, currentLine);
+  while (!input.eof()) {
+    if (currentLine.find("<") != string::npos &&
+      currentLine.find("<") != currentLine.find("</")) {
+
+      addElement(extractFromTag(currentLine, currentLine.find("<")));
+
+    }
+    getline(input, currentLine);
+  }
+}
+
+//Tag example <tag>
+string XMLTable::extractFromTag(const string& input, size_t pos) const {
+  string output;
+  size_t endPos = input.find('>');
+
+  if (endPos == string::npos) {
+    return string("");
+  }
+
+  output = input.substr(pos + 1, endPos - (pos + 1));
+  return output;
+}
+
 void XMLTable::toOstream(ostream& ostrm) const {
   int width = getTableWidth();
 
@@ -87,5 +122,6 @@ void XMLTable::print() const {
 }
 
 void XMLTable::table2File() const {
-  ofstream();
+  ofstream out(outFile);
+  toOstream(out);
 }

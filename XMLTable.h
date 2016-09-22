@@ -6,6 +6,9 @@ struct Row {
   int counter;
 };
 
+//Constants
+const int INPUT_LINE_MAX_SIZE = 50;
+
 class XMLTable {
 public:
   XMLTable(const string& input, const string& output);
@@ -25,6 +28,10 @@ public:
   bool isInTable(const string& input) const;
 
   bool isEmpty() const;
+
+  void populateRowsFromFile();
+
+  string extractFromTag(const string&, size_t) const;
 
   void toOstream(ostream& ostrm) const;
 
