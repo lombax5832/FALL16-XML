@@ -2,6 +2,8 @@
 #include<string>
 #include<algorithm>
 #include<fstream>
+#include<iomanip>
+#include<iostream>
 
 
 XMLTable::XMLTable(const string& input, const string& output) {
@@ -72,7 +74,18 @@ bool XMLTable::isEmpty() const {
 	return false;
 }
 
+void XMLTable::toOstream(ostream& ostrm) const {
+	int width = getTableWidth();
+
+	ostrm << setw(width);
+
+	for (int i = 0; i < table.size(); i++) {
+		ostrm << table.at(i).name << table.at(i).counter;
+	}
+}
+
 void XMLTable::print() const {
+	toOstream(cout);
 }
 
 void XMLTable::table2File() const {
