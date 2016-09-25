@@ -6,12 +6,12 @@
 #include<iostream>
 
 
-XMLTable::XMLTable(const string& input, const string& output) {
+XMLTable::XMLTable(const string &input, const string &output) {
   inpFile = input;
   outFile = output;
 }
 
-void XMLTable::newRow(const string& input) {
+void XMLTable::newRow(const string &input) {
   Row newRow;
   newRow.counter = 1;
   newRow.name = input;
@@ -19,7 +19,7 @@ void XMLTable::newRow(const string& input) {
   table.push_back(newRow);
 }
 
-void XMLTable::addElement(const string& input) {
+void XMLTable::addElement(const string &input) {
   if (!isInTable(input)) {
     newRow(input);
   } else {
@@ -27,7 +27,7 @@ void XMLTable::addElement(const string& input) {
   }
 }
 
-int XMLTable::getCounter(const string& input) const {
+int XMLTable::getCounter(const string &input) const {
   size_t index = getIndex(input);
   if (index != string::npos) {
     return table.at(index).counter;
@@ -43,7 +43,7 @@ int XMLTable::getTotalElements() const {
   return sum;
 }
 
-size_t XMLTable::getIndex(const string& input) const {
+size_t XMLTable::getIndex(const string &input) const {
   for (size_t i = 0; i < table.size(); i++) {
     if (table.at(i).name == input) {
       return i;
@@ -60,7 +60,7 @@ int XMLTable::getTableWidth() const {
   return length + 1;
 }
 
-bool XMLTable::isInTable(const string& input) const {
+bool XMLTable::isInTable(const string &input) const {
   if (getIndex(input) != string::npos) {
     return true;
   }
@@ -68,10 +68,7 @@ bool XMLTable::isInTable(const string& input) const {
 }
 
 bool XMLTable::isEmpty() const {
-  if (table.size() == 0) {
-    return true;
-  }
-  return false;
+  return table.size() == 0;
 }
 
 void XMLTable::populateRowsFromFile() {
@@ -81,14 +78,15 @@ void XMLTable::populateRowsFromFile() {
     cout << "Could not open file " << inpFile << " for input" << endl;
     exit(1);
   }
-
+  size_t currentPos = 0;
   string currentLine;
   getline(input, currentLine);
   while (!input.eof()) {
-    if (currentLine.find("<") != string::npos &&
-      currentLine.find("<") != currentLine.find("</")) {
+    currentPos = currentLine.find("<");
+    if (currentPos != string::npos &&
+      currentPos != currentLine.find("</")) {
 
-      addElement(extractFromTag(currentLine, currentLine.find("<")));
+      addElement(extractFromTag(currentLine, currentPos));
 
     }
     getline(input, currentLine);
@@ -96,7 +94,7 @@ void XMLTable::populateRowsFromFile() {
 }
 
 //Tag example <tag>
-string XMLTable::extractFromTag(const string& input, size_t pos) const {
+string XMLTable::extractFromTag(const string &input, size_t pos) const {
   string output;
   size_t endPos = input.find('>');
 
@@ -108,7 +106,7 @@ string XMLTable::extractFromTag(const string& input, size_t pos) const {
   return output;
 }
 
-void XMLTable::toOstream(ostream& ostrm) const {
+void XMLTable::toOstream(ostream &ostrm) const {
   int width = getTableWidth();
 
   for (int i = 0; i < table.size(); i++) {
