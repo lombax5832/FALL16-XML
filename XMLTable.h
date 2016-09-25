@@ -8,21 +8,21 @@ struct Row {
 
 class XMLTable {
 public:
-  XMLTable(const string& input, const string& output);
+  XMLTable(const string &input, const string &output);
 
-  void newRow(const string& input);
+  void newRow(const string &input);
 
-  void addElement(const string& input);
+  void addElement(const string &input);
 
-  int getCounter(const string& input) const;
+  int getCounter(const string &input) const;
 
   int getTotalElements() const;
 
-  size_t getIndex(const string& input) const;
+  size_t getIndex(const string &input) const;
 
   int getTableWidth() const;
 
-  bool isInTable(const string& input) const;
+  bool isInTable(const string &input) const;
 
   bool isEmpty() const;
 
@@ -30,7 +30,7 @@ public:
 
   string extractFromTag(const string&, size_t) const;
 
-  void toOstream(ostream& ostrm) const;
+  void toOstream(ostream &ostrm) const;
 
   void print() const;
 
