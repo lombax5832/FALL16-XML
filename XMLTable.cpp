@@ -91,6 +91,7 @@ void XMLTable::populateRowsFromFile() {
     }
     getline(input, currentLine);
   }
+  input.close();
 }
 
 //Tag example <tag>
@@ -121,4 +122,5 @@ void XMLTable::print() const {
 void XMLTable::table2File() const {
   ofstream out(outFile);
   toOstream(out);
+  out.close();
 }
