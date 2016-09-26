@@ -5,7 +5,6 @@
 #include<iomanip>
 #include<iostream>
 
-
 XMLTable::XMLTable(const string &input, const string &output) {
   inpFile = input;
   outFile = output;
