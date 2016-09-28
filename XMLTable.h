@@ -1,6 +1,8 @@
 using namespace std;
 #include<vector>
 
+//Used to keep record of specific tags and the number of times
+//they appear in the input file
 struct Row {
   string name;
   int counter;
