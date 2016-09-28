@@ -109,7 +109,7 @@ string XMLTable::extractFromTag(const string &input, size_t pos) const {
 void XMLTable::toOstream(ostream &ostrm) const {
   int width = getTableWidth();
 
-  for (int i = 0; i < table.size(); i++) {
+  for (size_t i = 0; i < table.size(); i++) {
     ostrm << setw(width) << left << table.at(i).name << table.at(i).counter << endl;
   }
 }
