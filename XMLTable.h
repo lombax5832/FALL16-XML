@@ -112,7 +112,10 @@ public:
   void table2File() const;
 
 private:
+  // Store the table as a vector of Row objects
   vector<Row> table;
+  // Store the location/name of the input file
   string inpFile;
+  // Store the location/name of the output file
   string outFile;
 };
