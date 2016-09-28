@@ -78,8 +78,8 @@ public:
   /*
   Purpose: First it checks to see if the input file can be accessed
     Then adds tag names to table 
-  Pre:
-  Post:
+  Pre: Properly formatted XML within input file
+  Post: table will be populated with tags and number of times they appear
   */
   void populateRowsFromFile();
 
