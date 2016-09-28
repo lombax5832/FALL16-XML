@@ -72,19 +72,22 @@ bool XMLTable::isEmpty() const {
 }
 
 void XMLTable::populateRowsFromFile() {
+  // Creates an ifstream object that opens the file that inpFile refers to
   ifstream input(inpFile);
 
+  // Prints an error if the file could not be opened for input
   if (!input) {
     cout << "Could not open file " << inpFile << " for input" << endl;
     exit(1);
   }
-  size_t currentPos = 0;
-  string currentLine;
+
+  size_t currentPos = 0; // Stores the position of the first "<" substring found
+  string currentLine; // Temporarily stores the current line we're looking for a tag in
   getline(input, currentLine);
   while (!input.eof()) {
     currentPos = currentLine.find("<");
-    if (currentPos != string::npos &&
-      currentPos != currentLine.find("</")) {
+    if (currentPos != string::npos && // Make sure a "<" was found in the string
+      currentPos != currentLine.find("</")) { // Make sure we didn't get a closing tag
 
       addElement(extractFromTag(currentLine, currentPos));
 
