@@ -8,6 +8,7 @@
 XMLTable::XMLTable(const string &input, const string &output) {
   inpFile = input;
   outFile = output;
+  populateRowsFromFile();
 }
 
 void XMLTable::newRow(const string &input) {
@@ -56,7 +57,7 @@ int XMLTable::getTableWidth() const {
   for (size_t i = 0; i < table.size(); i++) {
     length = max(length, table.at(i).name.length());
   }
-  return length + 1;
+  return length;
 }
 
 bool XMLTable::isInTable(const string &input) const {
@@ -107,7 +108,7 @@ string XMLTable::extractFromTag(const string &input, size_t pos) const {
 }
 
 void XMLTable::toOstream(ostream &ostrm) const {
-  int width = getTableWidth();
+  int width = getTableWidth() + 1;
 
   for (size_t i = 0; i < table.size(); i++) {
     ostrm << setw(width) << left << table.at(i).name << table.at(i).counter << endl;
