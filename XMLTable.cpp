@@ -94,7 +94,6 @@ void XMLTable::populateRowsFromFile() {
   input.close();
 }
 
-//Tag example <tag>
 string XMLTable::extractFromTag(const string &input, size_t pos) const {
   string output;
   size_t endPos = input.find('>');

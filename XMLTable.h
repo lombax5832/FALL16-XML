@@ -92,8 +92,8 @@ public:
 
   /*
   Purpose: Formats the table to be stored in output.txt
-  Pre:
-  Post:
+  Pre: Valid ostream object or object derived from ostream, such as ofstream
+  Post: Will output formatted lines into the passed ostream
   */
   void toOstream(ostream &ostrm) const;
 
