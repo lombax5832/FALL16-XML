@@ -8,6 +8,7 @@
 XMLTable::XMLTable(const string &input, const string &output) {
   inpFile = input;
   outFile = output;
+  populateRowsFromFile();
 }
 
 void XMLTable::newRow(const string &input) {
