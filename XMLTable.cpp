@@ -97,7 +97,7 @@ void XMLTable::populateRowsFromFile() {
   input.close();
 }
 
-string XMLTable::extractFromTag(const string &input, size_t pos) const {
+string XMLTable::extractFromTag(const string &input, size_t startPos) const {
   string output;
   size_t endPos = input.find('>');
 
@@ -105,7 +105,7 @@ string XMLTable::extractFromTag(const string &input, size_t pos) const {
     return string("");
   }
 
-  output = input.substr(pos + 1, endPos - (pos + 1));  //Extracts the string from text file
+  output = input.substr(startPos + 1, endPos - (startPos + 1));  //Extracts the string from text file
   return output;
 }
 
