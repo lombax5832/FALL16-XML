@@ -82,13 +82,14 @@ void XMLTable::populateRowsFromFile() {
   }
 
   size_t currentPos = 0; // Stores the position of the first "<" substring found
-  string currentLine; // Temporarily stores the current line we're looking for a tag in
+  string currentLine; // Temporarily stores the current line we're looking for
+                      //   a tag in
   getline(input, currentLine);
   while (!input.eof()) {
     currentPos = currentLine.find("<");
     if (currentPos != string::npos && // Make sure a "<" was found in the string
-      currentPos != currentLine.find("</")) { // Make sure we didn't get a closing tag
-
+      currentPos != currentLine.find("</")) { // Make sure we didn't get a
+                                              //   closing tag
       addElement(extractFromTag(currentLine, currentPos));
 
     }
@@ -101,11 +102,13 @@ string XMLTable::extractFromTag(const string &input, size_t startPos) const {
   string output;
   size_t endPos = input.find('>');
 
-  if (endPos == string::npos) {		//If no closing bracket is found, returned string is empty("")
+  if (endPos == string::npos) {	// If no closing bracket is found,
+                                //   returned string is empty("")
     return string("");
   }
 
-  output = input.substr(startPos + 1, endPos - (startPos + 1));  //Extracts the string from text file
+  //Extracts the string from text file
+  output = input.substr(startPos + 1, endPos - (startPos + 1));
   return output;
 }
 
@@ -114,7 +117,8 @@ void XMLTable::toOstream(ostream &ostrm) const {
 
   // Runs a loop and outputs a line to an ostream object
   for (size_t i = 0; i < table.size(); i++) {
-    ostrm << setw(width) << left << table.at(i).name << table.at(i).counter << endl;
+    ostrm << setw(width) << left << table.at(i).name 
+      << table.at(i).counter << endl;
   }
 }
 
