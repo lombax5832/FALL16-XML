@@ -98,11 +98,11 @@ string XMLTable::extractFromTag(const string &input, size_t pos) const {
   string output;
   size_t endPos = input.find('>');
 
-  if (endPos == string::npos) {
+  if (endPos == string::npos) {		//If no closing bracket is found, returned string is empty("")
     return string("");
   }
 
-  output = input.substr(pos + 1, endPos - (pos + 1));
+  output = input.substr(pos + 1, endPos - (pos + 1));  //Extracts the string from text file
   return output;
 }
 

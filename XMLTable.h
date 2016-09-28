@@ -9,9 +9,9 @@ struct Row {
 class XMLTable {
 public:
   /*
-  Purpose: Constructor to create the class XMLTable
-  Pre: Two strings to create to files
-  Post:
+  Purpose: Constructor for the class XMLTable
+  Pre: Two strings to create to files within the class
+  Post: XMLTable object was created
   */
   XMLTable(const string &input, const string &output);
 
@@ -76,21 +76,22 @@ public:
   bool isEmpty() const;
 
   /*
-  Purpose:
+  Purpose: First it checks to see if the input file can be accessed
+    Then adds tag names to table 
   Pre:
   Post:
   */
   void populateRowsFromFile();
 
   /*
-  Purpose:
-  Pre:
-  Post:
+  Purpose: Searches and extracts a XML tag name from a string
+  Pre: A string used as the specific search item and the starting position of the string
+  Post: Either will return the specific string or returns "" 
   */
   string extractFromTag(const string&, size_t) const;
 
   /*
-  Purpose:
+  Purpose: Formats the table to be stored in output.txt
   Pre:
   Post:
   */
